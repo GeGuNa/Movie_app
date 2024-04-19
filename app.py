@@ -48,6 +48,8 @@ def genre():
 """ users / movies / categories """
 
 from db import check_user, Get_User
+from db import check_movie, Get_Movie
+
 
 @app.route("/user/<int:uid>", methods=['GET'])
 def usr_idd(uid: int):
@@ -65,7 +67,12 @@ def fcatid_idd(cid: int):
 
 @app.route("/mov/<int:mid>", methods=['GET'])
 def fmovid_idd(mid: int):
-   return f" {mid}"
+   if (check_movie(mid)):
+      data_mv = Get_Movie(mid)
+      return f" {data_mv.name}"
+   else:  
+      return redirect('/')
+      
 
 
 """ end  """

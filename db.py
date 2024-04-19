@@ -51,7 +51,7 @@ def Get_User(id):
 
 @db_session
 def Get_Movie(id):
-   data = Users.get(id=id)
+   data = Movies.get(id=id)
    return data
    
    
