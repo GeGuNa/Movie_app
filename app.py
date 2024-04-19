@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect
 from flask import g, session, send_from_directory
 from rest import app_sec
 #import os
@@ -43,6 +43,32 @@ def contact():
 def genre():
    return render_template('genre.html')
     
+
+
+""" users / movies / categories """
+
+from db import check_user, Get_User
+
+@app.route("/user/<int:uid>", methods=['GET'])
+def usr_idd(uid: int):
+   #if the user exists in our database
+   if check_user(uid):
+      data_usr = Get_User(uid)
+      return f" {uid}  {data_usr.name} "
+   else:
+      return redirect('/')
+      
+      
+@app.route("/cat/<int:cid>", methods=['GET'])
+def fcatid_idd(cid: int):
+   return f" {cid}"
+
+@app.route("/mov/<int:mid>", methods=['GET'])
+def fmovid_idd(mid: int):
+   return f" {mid}"
+
+
+""" end  """
  
  
 @app.errorhandler(404)
