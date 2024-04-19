@@ -1,11 +1,10 @@
 from sqlobject import *
 
 
-
-user = ""
-password = ""
-db_name= ""
-host = ""
+user = "xz"
+password = "xz"
+db_name= "xz"
+host = "localhost"
 
 connection_string = 'sqlite:a.sql'
 
