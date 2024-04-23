@@ -60,6 +60,30 @@ def Get_Cat(id):
    data = Categories.exists(id=id)
    return data
    
+   
+"""
+
+MariaDB [mov]> describe users;
++------------+--------------+------+-----+---------+----------------+
+| Field      | Type         | Null | Key | Default | Extra          |
++------------+--------------+------+-----+---------+----------------+
+| id         | int(11)      | NO   | PRI | NULL    | auto_increment |
+| name       | varchar(255) | NO   |     | NULL    |                |
+| surn       | varchar(255) | NO   |     | NULL    |                |
+| registered | int(11)      | YES  |     | NULL    |                |
+| username   | varchar(255) | NO   |     | NULL    |                |
++------------+--------------+------+-----+---------+----------------+
+
+
+"""
+
+   
+@db_session
+def Insert_usr(name: str, surn: str, nick: str):
+   db.execute(f"insert into users (`name`,`surn`,`username`)  values('{name}','{surn}','{nick}')")
+   print("done")
+   
+#Insert_usr("","","")     
 
 
 #va = Get_User(1)
