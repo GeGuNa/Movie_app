@@ -80,10 +80,11 @@ MariaDB [mov]> describe users;
    
 @db_session
 def Insert_usr(name: str, surn: str, nick: str):
-   db.execute(f"insert into users (`name`,`surn`,`username`)  values('{name}','{surn}','{nick}')")
+   #db.execute(f"insert into users (`name`,`surn`,`username`)  values('{name}','{surn}','{nick}')")
+   db.execute(f"insert into users (name,surn,username)  values($name, $surn, $nick)")
    print("done")
    
-#Insert_usr("","","")     
+#Insert_usr("111","222","333")     
 
 
 #va = Get_User(1)
@@ -108,4 +109,21 @@ with db_session:
    qq = db.select("select * from users where id > 4")
    for az in qq:
       print(f" {az.id} {az.username} \n")
+"""
+
+
+@db_session
+def zfetc():
+   id = 14124
+   data = db.get("select * from users where id = $id")
+   return data
+   
+
+""""
+try:
+   f_data = zfetc()
+   for i in f_data:
+         print(f"{i} ")   
+except:
+   print("errr")
 """
