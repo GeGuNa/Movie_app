@@ -98,6 +98,24 @@ def Users_list():
       #print(f" id = {va.id} nick = {va.username} ")
 
 """
+
+
+| id | name                | surn        | registered | username                |
+
+
+"""
+@db_session
+def Insrtto_users(name: str, surn: str, NickName: str):
+   #with db_session:
+   db.insert("users", name=name,surn=surn,username=NickName)
+   
+   #for va in aq:
+      #print(f" id = {va.id} nick = {va.username} ")
+
+#Insrtto_users('zzzz','kkk','PHanqtom_1z')
+
+
+"""
 varq1 = Users_list()
 for va in varq1:
    print(f" id = {va.id} nick = {va.username} ")
